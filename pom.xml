@@ -27,6 +27,9 @@
 		<url/>
 	</scm>
 	<properties>
+		<sonar.projectKey>afflorezc_lab02_arquisoft</sonar.projectKey>
+		<sonar.organization>afflorezc</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
