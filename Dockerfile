@@ -1,4 +1,13 @@
-FROM openjdk:17
+# Building phase
+FROM maven:latest AS build 
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Packing phase (runtime)
+FROM openjdk:11-jdk-slim
+WORKDIR /app
+# Copia el JAR de la etapa 'build' a la etapa actual
+COPY --from=build /app/target/faker.jar faker.jar
 EXPOSE 8080
-ADD target/lab2p-0.0.1-SNAPSHOT.jar lab2p.jar
-ENTRYPOINT ["java","-jar","/lab2p.jar"]
+ENTRYPOINT ["java","-jar","faker.jar"]
