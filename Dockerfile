@@ -5,9 +5,9 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Packing phase (runtime)
-FROM openjdk:11-jdk-slim
+FROM openjdk:17-jdk-slim
 WORKDIR /app
-# Copia el JAR de la etapa 'build' a la etapa actual
-COPY --from=build /app/target/faker.jar faker.jar
+# Copy JAR file from build phase to current phase
+COPY --from=build /app/target/lab2p.jar lab2p.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","faker.jar"]
+ENTRYPOINT ["java","-jar","lab2.jar"]
