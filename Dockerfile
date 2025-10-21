@@ -10,4 +10,4 @@ WORKDIR /app
 # Copy JAR file from build phase to current phase
 COPY --from=build /app/target/lab2p.jar lab2p.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","lab2.jar"]
+ENTRYPOINT ["java","-jar","lab2p.jar"]
